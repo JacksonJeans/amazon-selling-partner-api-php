@@ -21,7 +21,7 @@ $AddressShipTo->city = 'Krefeld';
 $AddressShipTo->postalCode = '47799';
 $AddressShipTo->email = 'julian.tietz@gidutex.de';
 $AddressShipTo->copyEmails = array('email1@address.de');
-$AddressShipTo->phoneNumber = '015734739640';
+$AddressShipTo->phoneNumber = '1234567890';
 
 $AddressShipFrom = new Shippings\Address;
 $AddressShipFrom->name = 'GIDUTEX International GmbH';
@@ -34,7 +34,7 @@ $AddressShipFrom->city = 'Krefeld';
 $AddressShipFrom->postalCode = '47804';
 $AddressShipFrom->email = 'julian.tietz@gidutex.de';
 $AddressShipFrom->copyEmails = array('email1@address.de');
-$AddressShipFrom->phoneNumber = '015734739640';
+$AddressShipFrom->phoneNumber = '1234567890';
 
 # Container 1 
 $Container = new Shippings\Container;
