@@ -89,9 +89,15 @@ The [MWS documentation](https://m.media-amazon.com/images/G/03/B2B/invoice-uploa
 
 WARNING: "Invoices" only works for users who already have an activated MWS account.
 
+### [Testcase FulFillmentInbound](/test/FulfillmentInbound/)
+
+The FulFillmentInbound API service knows 2 different NextTokens that differ for the corresponding GET-operation:
+
+ShipmentsNextToken for getShipments() and ShipmentItemNextToken for getShipmentItems().
+
 ### [Testcase Shippings](/test/Shippings/)
 
-- On the way to completion - test phase
+It's relatively easy to use. There is nothing more to say about this. Try it out if u have a valid account.
 
 ### [Testcase Uploads](/test/Uploads/)
 
@@ -104,12 +110,12 @@ WARNING: "Invoices" only works for users who already have an activated MWS accou
 - [x] Feeds - work perfect
 - [x] Uploads - work perfect
 - [x] Invoices - work perfect
-- [ ] Shippings - almost finished
+- [x] Shippings - work perfect
 - [ ] Catalogs
 - [ ] FBAInboundEligibility
 - [ ] FBAInventory
 - [ ] FBASmallAndLight
-- [ ] FulFillmentInbound -  in progress
+- [x] FulFillmentInbound -  almost finished
 - [ ] FulFillmentOutbound - in progress
 - [ ] MerchantFulFillment - in progress
 - [ ] Messaging
@@ -117,7 +123,7 @@ WARNING: "Invoices" only works for users who already have an activated MWS accou
 - [ ] ProductFeeds
 - [ ] ProductPricing
 - [ ] Sales
-- [ ] Sellers
+- [x] Sellers - work perfect
 - [ ] Services
 - [ ] Solicitations
 
@@ -139,21 +145,21 @@ $SignatureV4->AWSAuthDebug = true;
 
 **Output:**
 
-Aufgabe 1.2 - Fügen Sie den kanonische URI-Parameter hinzu, gefolgt von einem Zeilenumbruchzeichen.
+Task 1.2 - Add the canonical URI parameter followed by a newline character.
 
-  ORIGINAL DOKU: 
+ DOCU: 
 
 ```
 /documents%2520and%2520settings/
 ```
 
-UNSERER:
+Our:
 
 ```
 /shipping/v1/rates
 ```
 
-Aufgabe 1.3 - Fügen Sie die kanonische Abfragezeichenfolge hinzu, gefolgt von einem Zeilenumbruchzeichen.
+Task 1.3 - Add the canonical query string followed by a newline character.
 
 DOCU:  
 
@@ -167,7 +173,7 @@ Our:
 
 ```
 
-Aufgabe: 1.4 - Fügen Sie die kanonischen Header hinzu,  gefolgt von einem Zeilenumbruchzeichen. Die kanonischen Header bestehen  aus einer Liste aller HTTP-Header,die Sie mit der signierten Anforderung einfügen.
+Task: 1.4 - Add the canonical headers followed by a newline character. The canonical headers consist of a list of all HTTP headers that you include with the signed request.
 
 DOCU: 
 
@@ -202,7 +208,7 @@ Our:
 content-type;host;user-agent;x-amz-date
 ```
 
- Aufgabe 1.6 -  Verwenden Sie eine  Hash-(Digest-)Funktion wie SHA256 zum Erstellen eines Hash-Werts aus der Nutzlast im Text der HTTP- oder HTTPS-Anforderung. 
+Task 1.6 - Use a hash (digest) function such as SHA256 to create a hash value from the payload in the text of the HTTP or HTTPS request. 
 
 DOCU with empty string in the payload: 
 
@@ -216,7 +222,7 @@ Our:
 bd09435c4ae88e3531f04c315b7b6627c27b2a84e4da2afcce29a733bee93527
 ```
 
- Aufgabe 1.7 -  Um die fertige kanonische Anforderung  zu erstellen, verbinden Sie alle Komponenten aus jedem Schritt zu einer  einzigen Zeichenfolge.
+Task 1.7 - To create the finished canonical requirement, combine all components from each step into a single string.
 
 DOCU:  
 
@@ -246,7 +252,7 @@ content-type;host;user-agent;x-amz-date
 bd09435c4ae88e3531f04c315b7b6627c27b2a84e4da2afcce29a733bee93527
 ```
 
- Aufgabe 1.8 -  Erstellen Sie einen Digest (Hash) der  kanonischen Anforderung mit dem gleichen Algorithmus, den Sie für das  Hashing der Nutzlast verwendet haben.
+ Task 1.8 - Create a digest (hash) of the canonical request using the same algorithm you used to hash the payload.
 
 DOCU:  
 
@@ -262,7 +268,7 @@ Our:
 
 
 
- Aufgabe 2 -  Erstellen einer zu signierenden Zeichenfolge.
+ Task 2 - Create a string to be signed.
 
 DOCU:  
 
@@ -282,7 +288,7 @@ AWS4-HMAC-SHA256
 3001cc6d6c78d3fe0ff64ac0d3bfec0dfc04a8464bb130c6a94786be50a6f165
 ```
 
- Aufgabe 3.1 -  Berechnen der Signatur. Leiten Sie Ihren Signaturschlüssel ab.
+ Task 3.1 - Calculate the signature. Derive your signature key.
 
 DOCU: 
 
@@ -290,13 +296,13 @@ DOCU:
 c4afb1cc5771d871763a393e44b703571b55cc28424d1a5e86da6ed3c154a4b9
 ```
 
-UNSERER
+Our:
 
 ```
 dec5bd48a268b46fd53661ded0361b544ccf01491e2845fcc72bd9b9b6e78877
 ```
 
- Aufgabe 3.2 -  Berechnen der Signatur. Berechnen Sie  die Signatur. Verwenden Sie dazu den Signaturschlüssel, den Sie  abgeleitet haben.
+ Task 3.2 - Calculate the signature. Calculate the signature. Use the signature key you have derived.
 
 DOCU: 
 
